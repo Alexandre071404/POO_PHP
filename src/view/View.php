@@ -29,5 +29,9 @@ class View {
         $this->title="Page sur ".$name;
         $this->content=$name." est un animal de l'espèce ".$species;
     }
+    public function prepareUnknownAnimalPage(){
+        $this->title="Animal inconnu";
+        $this->content="Cette animal n'est pas dans la base de donnée";
+    }
 }
 ?>
