@@ -1,7 +1,14 @@
 <?php
-class Router {
+require_once("view/View.php");
+
+class Router{
+
 	public function main() {
-		echo "Hello World";
+		
+		$view = new View();
+		$view->prepareAnimalPage("Médor","Chien");
+		$view->render();
+
 	}
 }
 ?>
