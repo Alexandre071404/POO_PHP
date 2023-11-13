@@ -5,12 +5,23 @@ require_once("view/View.php");
 class Router{
 
 	public function main() {
-		$view = new View();
-		$control=new Controller($view);
-		$control->showInformation("felix");
-		$view->render();
-		
 
+		try {
+			if (key_exists('id', $_GET)) {
+				$view = new View();
+				$control=new Controller($view);
+				$control->showInformation($_GET['id']);
+				$view->render();
+			} 
+			else {
+				$view = new View();
+				$control=new Controller($view);
+				$control->AccueilPage();
+				$view->render();
+			}
+		}catch (Exception $e) {
+			echo $e->getMessage();
+		}
 	}
 }
 ?>

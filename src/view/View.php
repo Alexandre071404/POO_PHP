@@ -33,5 +33,9 @@ class View {
         $this->title="Animal inconnu";
         $this->content="Cette animal n'est pas dans la base de donnée";
     }
+    public function prepareAccueilPage(){
+        $this->title="Bienvenue sur notre site";
+        $this->content="Veuillez compléter l'URL avec un id=";
+    }
 }
 ?>

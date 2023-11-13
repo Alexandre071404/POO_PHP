@@ -18,9 +18,9 @@ class Controller{
            $this->view->prepareUnknownAnimalPage();
         }
     }
-    
-    
-
-}
+    public function AccueilPage(){
+            $this->view->prepareAccueilPage();
+        }
+    }
 
 ?>
