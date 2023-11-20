@@ -1,23 +1,21 @@
 <?php
 
 require_once("model/Animal.php");
+require_once("model/AnimalStorage.php");
+
 
 class Controller{    
     
     protected $view;
     protected $animalsTab;
-    public function __construct(View $v) {
+    public function __construct(View $v,AnimalStorage $tabanimalStorage) {
         $this->view = $v;
-        $this->animalsTab=array(
-            'medor' => new Animal('Médor','Chien','8'),
-            'felix' =>  new Animal('Félix','Chat','3'),
-            'denver' =>  new Animal('Denver','Dinausore','456778980'),
-        );
+        $this->animalsTab = $tabanimalStorage;
     }
 
     public function showInformation($id) {
-        if (array_key_exists($id,$this->animalsTab)){
-            $this->view->prepareAnimalPage($this->animalsTab[$id]);
+        if (array_key_exists($id,$this->animalsTab->readAll())){
+            $this->view->prepareAnimalPage($this->animalsTab->read($id));
         } 
         else {
            $this->view->prepareUnknownAnimalPage();
@@ -28,7 +26,7 @@ class Controller{
         }
         
     public function showList(){
-            $this->view->prepareListPage($this->animalsTab);
+            $this->view->prepareListPage($this->animalsTab->readAll());
         }
     }
 
