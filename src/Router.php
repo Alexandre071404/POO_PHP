@@ -9,13 +9,19 @@ class Router{
 
 		try {
 			if (key_exists('id', $_GET)) {
-				$view = new View();
+				$view = new View($this);
 				$control=new Controller($view);
 				$control->showInformation($_GET['id']);
 				$view->render();
 			} 
+			else if (key_exists('liste', $_GET)) {
+				$view = new View($this);
+				$control=new Controller($view);
+				$control->showList();
+				$view->render();
+			} 
 			else {
-				$view = new View();
+				$view = new View($this);
 				$control=new Controller($view);
 				$control->AccueilPage();
 				$view->render();
@@ -23,6 +29,9 @@ class Router{
 		}catch (Exception $e) {
 			echo $e->getMessage();
 		}
+	}
+	public function getAnimalURl($id){
+		return "site.php?id=".$id."";
 	}
 }
 ?>

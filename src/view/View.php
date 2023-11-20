@@ -1,9 +1,15 @@
 <?php
+require_once("Router.php");
 
-require_once("../model/Animal.php");
+require_once("model/Animal.php");
 class View {
     protected $title;
     protected $content;
+    protected $router;
+
+    public function __construct( Router $router ) {
+        $this->router = $router;
+    }
     public function render(){
     
         echo '<!DOCTYPE html>
@@ -37,5 +43,12 @@ class View {
         $this->title="Bienvenue sur notre site";
         $this->content="Veuillez compléter l'URL avec un id=";
     }
+    public function prepareListPage(array $animalsTab){
+        $this->title="Affichage quelconque";
+        foreach(array_keys($animalsTab) as $animal){   
+            $this->content.="<li><a href='".$this->router->getAnimalURl($animal)."'>-".$animal."</li>";
+        }
+    } 
+
 }
 ?>

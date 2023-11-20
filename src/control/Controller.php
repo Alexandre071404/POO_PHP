@@ -26,6 +26,10 @@ class Controller{
     public function AccueilPage(){
             $this->view->prepareAccueilPage();
         }
+        
+    public function showList(){
+            $this->view->prepareListPage($this->animalsTab);
+        }
     }
 
 ?>
