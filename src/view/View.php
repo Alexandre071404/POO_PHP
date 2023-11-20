@@ -1,6 +1,6 @@
 <?php
 
-
+require_once("model/Animal.php");
 class View {
     protected $title;
     protected $content;
@@ -25,9 +25,9 @@ class View {
         $this->content="Un contenu vraiment simple";
         
     }
-    public function prepareAnimalPage($name, $species){
-        $this->title="Page sur ".$name;
-        $this->content=$name." est un animal de l'espèce ".$species;
+    public function prepareAnimalPage(Animal $animal){
+        $this->title="Page sur ".$animal->getNom();
+        $this->content=$animal->getNom()." est un animal de l'espèce ".$animal->getESpece();
     }
     public function prepareUnknownAnimalPage(){
         $this->title="Animal inconnu";

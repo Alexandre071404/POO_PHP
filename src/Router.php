@@ -1,6 +1,7 @@
 <?php
 require_once("control/Controller.php");
 require_once("view/View.php");
+require_once("model/Animal.php");
 
 class Router{
 

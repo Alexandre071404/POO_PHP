@@ -1,18 +1,23 @@
 <?php
+
+require_once("model/Animal.php");
+
 class Controller{    
-    protected $animalsTab=array(
-        'medor' => array('Médor', 'chien'),
-        'felix' => array('Félix', 'chat'),
-        'denver' => array('Denver', 'dinosaure'),
-    );
+    
     protected $view;
+    protected $animalsTab;
     public function __construct(View $v) {
         $this->view = $v;
+        $this->animalsTab=array(
+            'medor' => new Animal('Médor','Chien','8'),
+            'felix' =>  new Animal('Félix','Chat','3'),
+            'denver' =>  new Animal('Denver','Dinausore','456778980'),
+        );
     }
 
     public function showInformation($id) {
         if (array_key_exists($id,$this->animalsTab)){
-            $this->view->prepareAnimalPage($this->animalsTab[$id][0], $this->animalsTab[$id][1]);
+            $this->view->prepareAnimalPage($this->animalsTab[$id]);
         } 
         else {
            $this->view->prepareUnknownAnimalPage();
