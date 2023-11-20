@@ -1,6 +1,6 @@
 <?php
 
-require_once("model/Animal.php");
+require_once("../model/Animal.php");
 class View {
     protected $title;
     protected $content;
