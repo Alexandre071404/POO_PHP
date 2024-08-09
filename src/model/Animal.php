@@ -1,9 +1,9 @@
 <?php
 
 class Animal{
-    protected $nom;
-    protected $espece;
-    protected $age;
+    private $nom;
+    private $espece;
+    private $age;
 
     public function __construct($n,$e,$a){
         $this->nom = $n;
